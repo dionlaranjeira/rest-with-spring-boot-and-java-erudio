@@ -1,5 +1,6 @@
 package com.github.dionlaranjeira.restwithspringbootandjavaerudio;
 
+import com.github.dionlaranjeira.restwithspringbootandjavaerudio.exceptions.UnsupportedMathOperationException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +19,7 @@ public class MathController {
             @PathVariable(value = "numberOne") String numberOne,
             @PathVariable(value = "numberTwo") String numberTwo) throws Exception {
         if(!isNumeric(numberOne) || !isNumeric(numberTwo)){
-            throw new Exception();}
+            throw new UnsupportedMathOperationException("Por favor, insira um número");}
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
 
